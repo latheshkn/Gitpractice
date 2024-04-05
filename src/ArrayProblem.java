@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ArrayProblem {
 
@@ -13,7 +11,8 @@ public class ArrayProblem {
 
 //        binaryCount();
         int[] a ={2,7,11,15};
-        System.out.println(Arrays.toString(binarySearch(a,9)));
+//        System.out.println(Arrays.toString(binarySearch(a,9)));
+        System.out.println(partitionLabels("aebbedaddc"));
     }
 
     private static void binaryCount() {
@@ -54,6 +53,26 @@ public class ArrayProblem {
 
         return new int[]{};
     }
+
+    public static List<Integer> partitionLabels(String s) {
+
+        List<Integer> result=new ArrayList<>();
+
+        for (int i = 0; i < s.length();) {
+            int index = s.lastIndexOf(s.charAt(i));
+            for (int j = i+1; j <= index-1; j++) {
+
+                int lastIndexOfindex = s.lastIndexOf(s.charAt(j));
+
+                if (lastIndexOfindex>index){
+                    index =lastIndexOfindex;
+               }
+        }
+            result.add((index-i)+1);
+            i=index+1;
+    }
+        return result;
+}
 
 
 }
